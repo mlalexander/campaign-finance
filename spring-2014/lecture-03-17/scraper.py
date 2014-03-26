@@ -6,17 +6,15 @@ html = urllib2.urlopen('https://www.showmeboone.com/sheriff/JailResidents/JailRe
 soup = BeautifulSoup(html)
 results_table = soup.find('table', attrs={'class': 'resultsTable'})
 
-output_table = []
+output_list = [] # This corresponds to the table
 
 for tr in results_table.findAll('tr'):
-    
-    output_row = []
-    tds = tr.findAll('td')
-    
-    for td in tds:
-        scraped_value = td.text.replace('&nbsp;', '')
-        output_row.append(scraped_value)
 
-    output_table.append(output_row)
+    row_list = []
 
-print output_table
+    for td in tr.findAll('td'):
+        row_list.append(td.text.replace('&nbsp;', ''))
+
+    output_list.append(row_list)
+
+print output_list
