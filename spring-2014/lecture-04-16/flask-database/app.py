@@ -56,15 +56,19 @@ def crime_static():
 
 @app.route("/data-dynamic")
 def crime_dynamic():
-    db = get_db()
-    cur = db.execute('select * from dispatches;')
+    # Access and query our database
+    connection = get_db()
+    cursor = connection.execute('select * from dispatches;')
 
+    # Turn the query results into dictionaries
     dispatches = []
-    for row in cur.fetchall():
+    for row in cursor.fetchall():
         dispatches.append(dict(row))
 
+    # Turn the data into JSON
     template = json.dumps(dispatches)
 
+    # Return JSON to the browser
     response = make_response(template)
     response.headers['Content-Type'] = 'application/json'
     return response

@@ -8,11 +8,11 @@ You'll remember that we used Flask to generate a JSON file by accessing a SQLite
 
 Of course, for the purposes of this class we're not running our apps on the Internet -- we're running them on our own machines. Because we haven't set them up to connect directly, the frontend and backend parts of the app each have to be launched in slightly different ways.
 
-To run the Flask app that generates the JSON, we can simply navigate into the directory containing the app and type: ```python app.py``` (assuming your file is called app.py). That will start the built-in Flask server and allow you to see the site in your web browser at the address 127.0.0.1:8000.
+To run the Flask app that generates the JSON, we can simply navigate into the directory containing the app and type: ```python app.py``` (assuming your file is called app.py). That will start the built-in Flask server and allow you to see the site in your web browser at the address 127.0.0.1:5000.
 
 Python also comes with a generic server you can use to render static HTML files, like the one we're building for our frontend. You may have noticed that if you open your static HTML files in your web browser, it might look as though they are rendering correctly. However *this is a bad idea*. Many Javascript calls, including anything involving AJAX, will not work properly unless you are viewing your HTML file through a server. That's why Python's built-in server is so useful.
 
-To launch it, navigate into the directory where the HTML file for your frontend application is stored and type: ```python -mSimpleHTTPServer```. Once again, a local server will be launched at the IP address 127.0.0.1:8000. To view your file, just add its name to the end of the IP address. So if your file is called incidents.html, you could view it by going to 127.0.0.1:8000/incidents.html. This is the easiest environment in which to do your frontend development.
+To launch it, navigate into the directory where the HTML file for your frontend application is stored and type: ```python -mSimpleHTTPServer```. A local server will be launched at the IP address 127.0.0.1:8000. To view your file, just add its name to the end of the IP address. So if your file is called incidents.html, you could view it by going to 127.0.0.1:8000/incidents.html. This is the easiest environment in which to do your frontend development.
 
 ## Connecting the frontend to a data source ##
 

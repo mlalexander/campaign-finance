@@ -10,10 +10,14 @@ def hello():
 def hello_template():
     return render_template("hello.txt")
 
+
 @app.route("/data")
 def make_json():
-    response = make_response(render_template("data.json"))
+    template = render_template("data.json")
+
+    response = make_response(template)
     response.headers['Content-Type'] = 'application/json'
+
     return response
 
 if __name__ == "__main__":

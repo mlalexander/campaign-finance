@@ -1,16 +1,4 @@
-'''
-Your assignment is to use the boilerplate app we've been building in class to produce JSON from
-a new database, in this case of Medicare payments to doctors in Columbia. Specifically, you should
-create a function that returns all of the data from the "doctors" table when someone visits the 
-"/doctors" route in your application.
-
-Most of the code below is boilerplate that you won't have to modify. You should only be changing
-two areas: first, change the appropriate setting to connect the application to the "medicare.sqlite"
-database (which is included in the repository). Second, write a function that produces the JSON.
-'''
-
-########## IMPORTS (DON'T CHANGE THESE) ##########
-
+# all the imports
 import os
 import sqlite3
 import json
@@ -19,9 +7,9 @@ from flask import Flask, g, render_template, make_response
 app = Flask(__name__)
 app.config.from_object(__name__)
 
-########## SETTINGS (CHANGE THESE AS APPROPRIATE) ##########
+########## SETTINGS (CHANGE THESE TO FIT YOUR APP) ##########
 
-DATABASE = ''
+DATABASE = 'campfin.sqlite'
 USERNAME = ''
 PASSWORD = ''
 
@@ -53,13 +41,37 @@ def close_db(error):
     if hasattr(g, 'sqlite_db'):
         g.sqlite_db.close()
 
-########## APP CODE (YOUR FUNCTION GOES HERE) ##########
+########## APP CODE (CHANGE THIS ) ##########
 
+@app.route("/")
+def hello():
+    return "Hello World!"
 
+@app.route("/data")
+def crime_static():
+    template = render_template("crime_data.json")
+    response = make_response(template)
+    response.headers['Content-Type'] = 'application/json'
+    return response
 
+@app.route("/data-dynamic")
+def crime_dynamic():
+    # Access and query our database
+    connection = get_db()
+    cursor = connection.execute('select * from contributions;')
 
+    # Turn the query results into dictionaries
+    dispatches = []
+    for row in cursor.fetchall():
+        dispatches.append(dict(row))
 
+    # Turn the data into JSON
+    template = json.dumps(dispatches)
 
+    # Return JSON to the browser
+    response = make_response(template)
+    response.headers['Content-Type'] = 'application/json'
+    return response
 
 ########## EXECUTION BOILERPLATE (ALSO DON'T CHANGE THIS) ##########
 
