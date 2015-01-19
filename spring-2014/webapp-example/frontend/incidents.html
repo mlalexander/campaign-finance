@@ -60,7 +60,7 @@
         map.addLayer(mapquestLayer);
  
         $.ajax({
-            url: 'incidents.json', // The URL of the datafile you want to load. In this case, could also be written as 127.0.0.1:8000/incidents.json
+            url: 'http://127.0.0.1:8000/incidents.json', // The URL of the datafile you want to load. In this case, could also be written as 127.0.0.1:8000/incidents.json
 
             // This "success" argument is a function that executes once the data loads, known as a callback. The function automatically
             // receives the data once it's loaded via the "data" argument. The data can then be manipulated inside the function.
@@ -76,7 +76,7 @@
                             .bindPopup(data[i].ExtNatureDisplayName);
                     }
                 } // Close the for loop
-            
+
                 // Now let's initialize a table. It targets the empty table shell called "example" that we initialized in the body above
                 $('#example').dataTable({
                     "data": data, // Passing the "data" variable from the callback function again
