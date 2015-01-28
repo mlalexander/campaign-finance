@@ -31,7 +31,7 @@ Libraries we'll be using include:
 - [BeautifulSoup](http://www.crummy.com/software/BeautifulSoup/) for web scraping (```pip install BeautifulSoup```)
 - [Mechanize](http://wwwsearch.sourceforge.net/mechanize/), also for web scraping (```pip install mechanize```)
 - [Flask](http://flask.pocoo.org/) for web development (```pip install Flask```)
-- [Django](http://www.djangoproject.org), also for web development (```pip install django```)
+- [Django](http://www.djangoproject.com), also for web development (```pip install django```)
 
 ## Github
 
